@@ -25,17 +25,44 @@ Copy `.env.example` to `.env`. Never commit `.env` to version control:
 - **Required for Live Mode (`EXECUTION_MODE=live`)**: `AICREDITS_API_KEY`, `AICREDITS_BASE_URL=https://api.aicredits.in/v1`, `AICREDITS_MODEL=openai/gpt-4o`. By default, `ALLOW_DETERMINISTIC_FALLBACK=false` so failed live calls raise `LiveExecutionError` rather than silently falling back.
 - **Required for Opt-In Cloud Run Deployment (`DEPLOY_TARGET=cloud_run`)**: `CONFIRM_CLOUD_DEPLOY=true`, `GCP_PROJECT_ID`, `GCP_REGION`, `GCP_ARTIFACT_REPOSITORY`, and a durable Cloud SQL `DATABASE_URL` (`postgresql://...`).
 
-## 4. Running Tests & Local Services
+## 4. How to Check Results & Demonstrate the Platform
 
+### Option A: Interactive CLI Demonstration & Report Generator (`demo.py`)
+Run an end-to-end multi-agent due diligence evaluation in the terminal:
 ```bash
-# Run the 18-point automated acceptance suite (works offline in deterministic mode)
-python3 -m unittest discover -s tests -p "test_*.py" -v
+# Evaluate NovaPay FinTech Corp (Asking: $420M -> Conditional Go)
+python demo.py --target "NovaPay FinTech Corp"
 
-# Start the production FastAPI server locally
+# Evaluate CloudMed AI Corp (Asking: $185M -> Approved Go)
+python demo.py --target "CloudMed AI Corp"
+
+# Or select orchestration pattern (Hierarchical, Parallel, Sequential)
+python demo.py --target "NovaPay FinTech Corp" --pattern Parallel
+```
+This prints the real-time agent execution pipeline, the Executive Committee decision, the DCF Valuation Bridge, the 6-domain breakdown table, and automatically exports a detailed Markdown report to `reports/diligence_report_<slug>.md`.
+
+### Option B: FastAPI Interactive Swagger UI
+Start the production API server locally:
+```bash
+python app.py
+# Or using uvicorn:
 uvicorn app:acquisense_cloud_app --host 127.0.0.1 --port 8080
+```
+Open your browser to:
+- **Interactive API Docs (Swagger UI)**: [http://127.0.0.1:8080/docs](http://127.0.0.1:8080/docs)
+- **Alternative Docs (ReDoc)**: [http://127.0.0.1:8080/redoc](http://127.0.0.1:8080/redoc)
+- **Health Check**: [http://127.0.0.1:8080/health](http://127.0.0.1:8080/health)
 
-# Verify opt-in deployment preflight (safe no-op by default)
-python3 deploy.py --target none
+### Option C: Automated Acceptance Test Suite
+Execute the full 14-point test suite covering all architecture, security, math, and A2A interop requirements:
+```bash
+python -m pytest tests/ -v
+```
+
+### Option D: Opt-In Deployment Preflight
+Verify deployment preflight safety checks (safe no-op by default):
+```bash
+python deploy.py --target none
 ```
 
 ## 5. Honest Capability Status Matrix
