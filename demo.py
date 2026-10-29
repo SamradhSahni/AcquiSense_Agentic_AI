@@ -40,16 +40,18 @@ def print_banner():
     print(banner)
 
 
-def run_demo(target_company: str, pattern: str = "Hierarchical", mode: str = "deterministic", export_path: str = None):
+def run_demo(target_company: str, pattern: str = "Hierarchical", mode: str = "deterministic", export_path: str = None, no_cache: bool = False):
     print_banner()
     print(f"[*] Target Company       : {target_company}")
     print(f"[*] Orchestration Pattern: {pattern}")
-    print(f"[*] Requested Mode       : {mode}")
+    print(f"[*] Requested Mode       : {mode}" + (" (Fresh live calls, cache bypassed)" if no_cache else ""))
     print(f"[*] Initializing Multi-Agent Runtime Cluster...\n")
 
     override_env = {}
     if mode:
         override_env["EXECUTION_MODE"] = mode
+    if no_cache:
+        override_env["LLM_CACHE_ENABLED"] = "false"
 
     cluster = AcquiSenseRuntimeCluster(override_env=override_env)
 
@@ -132,6 +134,11 @@ def run_demo(target_company: str, pattern: str = "Hierarchical", mode: str = "de
     print(f"    • Messaging Operations  : {metrics.get('message_ops', 0)} blackboard read/writes")
     print(f"    • Cache Hits in Run     : {metrics.get('cache_hits_in_run', 0)} hit(s)")
     print(f"    • In-Fold ML F1 Score   : {metrics.get('risk_f1_pct', 0):.1f}%")
+    if report.actual_execution_mode == "live_cache_replay":
+        print("    • Caching Transparency  : Results replayed from local SQLite database (acquisense_local.db)")
+        print("                              to prevent duplicate API token spend. Pass '--no-cache' for fresh API calls.")
+    elif report.actual_execution_mode == "live":
+        print("    • Live Network Gateway  : Fresh LLM queries were dispatched live to OpenAI GPT-4o via AICredits API.")
 
     # Export report if requested
     if not export_path:
@@ -228,13 +235,24 @@ def main():
         help="Execution mode (default: 'deterministic')",
     )
     parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Bypass SQLite LLM cache to force fresh live API calls to GPT-4o over the network",
+    )
+    parser.add_argument(
         "--export",
         default=None,
         help="Optional custom output path for markdown report",
     )
     args = parser.parse_args()
 
-    run_demo(target_company=args.target, pattern=args.pattern, mode=args.mode, export_path=args.export)
+    run_demo(
+        target_company=args.target,
+        pattern=args.pattern,
+        mode=args.mode,
+        export_path=args.export,
+        no_cache=args.no_cache,
+    )
 
 
 if __name__ == "__main__":
