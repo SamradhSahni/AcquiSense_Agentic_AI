@@ -1,0 +1,23 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/acquisense-mas:$COMMIT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/acquisense-mas:$COMMIT_SHA']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'acquisense-due-diligence-api'
+      - '--image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/acquisense-mas:$COMMIT_SHA'
+      - '--region=${_REGION}'
+      - '--platform=managed'
+      - '--no-allow-unauthenticated'
+      - '--service-account=acquisense-runtime-sa@$PROJECT_ID.iam.gserviceaccount.com'
+      - '--set-env-vars=AICREDITS_BASE_URL=https://api.aicredits.in/v1,AICREDITS_MODEL=openai/gpt-4o,EXECUTION_MODE=live,LLM_TEMPERATURE=0.0,ALLOW_DETERMINISTIC_FALLBACK=false,DEPLOY_TARGET=none'
+      - '--set-secrets=AICREDITS_API_KEY=projects/$PROJECT_ID/secrets/aicredits-api-key:latest,ACQUISENSE_JWT_SECRET=projects/$PROJECT_ID/secrets/acquisense-jwt-secret:latest,ACQUISENSE_A2A_SECRET=projects/$PROJECT_ID/secrets/acquisense-a2a-secret:latest,DATABASE_URL=projects/$PROJECT_ID/secrets/acquisense-cloudsql-url:latest'
+      - '--memory=2Gi'
+      - '--cpu=2'
+substitutions:
+  _REGION: us-central1
+  _REPO: acquisense-repo

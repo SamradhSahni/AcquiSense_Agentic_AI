@@ -1,0 +1,40 @@
+services:
+  postgres-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: acquisense
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_dev_password}
+      POSTGRES_DB: acquisense_mas
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U acquisense -d acquisense_mas"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  acquisense-api:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      EXECUTION_MODE: ${EXECUTION_MODE:-deterministic}
+      AICREDITS_API_KEY: ${AICREDITS_API_KEY:-}
+      AICREDITS_BASE_URL: ${AICREDITS_BASE_URL:-https://api.aicredits.in/v1}
+      AICREDITS_MODEL: ${AICREDITS_MODEL:-openai/gpt-4o}
+      LLM_TEMPERATURE: "0.0"
+      ALLOW_DETERMINISTIC_FALLBACK: ${ALLOW_DETERMINISTIC_FALLBACK:-false}
+      ACQUISENSE_JWT_SECRET: ${ACQUISENSE_JWT_SECRET:-local_compose_jwt_secret_64_chars_minimum_for_hs256_validation}
+      ACQUISENSE_A2A_SECRET: ${ACQUISENSE_A2A_SECRET:-local_compose_a2a_secret_64_chars_minimum_for_hs256_validation}
+      DATABASE_URL: sqlite:////tmp/acquisense_prod_runtime/acquisense_durable_state.db
+      DEPLOY_TARGET: "none"
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
