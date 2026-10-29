@@ -134,6 +134,12 @@ def run_demo(target_company: str, pattern: str = "Hierarchical", mode: str = "de
     print(f"    • Messaging Operations  : {metrics.get('message_ops', 0)} blackboard read/writes")
     print(f"    • Cache Hits in Run     : {metrics.get('cache_hits_in_run', 0)} hit(s)")
     print(f"    • In-Fold ML F1 Score   : {metrics.get('risk_f1_pct', 0):.1f}%")
+    run_id = metrics.get("evaluation_run_id")
+    total_runs = metrics.get("total_runs_in_store")
+    if run_id:
+        print(f"    • Evaluation Run ID     : {run_id}")
+    if total_runs:
+        print(f"    • Total Stored Runs     : {total_runs} evaluation run(s) in local SQLite ledger")
     if report.actual_execution_mode == "live_cache_replay":
         print("    • Caching Transparency  : Results replayed from local SQLite database (acquisense_local.db)")
         print("                              to prevent duplicate API token spend. Pass '--no-cache' for fresh API calls.")
@@ -244,7 +250,26 @@ def main():
         default=None,
         help="Optional custom output path for markdown report",
     )
+    parser.add_argument(
+        "--summary",
+        action="store_true",
+        help="Print overall evaluation summary and statistics from SQLite store",
+    )
+    parser.add_argument(
+        "--list-runs",
+        action="store_true",
+        help="List all past evaluation runs stored in SQLite ledger",
+    )
     args = parser.parse_args()
+
+    if args.summary or args.list_runs:
+        from benchmark import get_store, print_summary, print_list_runs
+        store = get_store()
+        if args.summary:
+            print_summary(store)
+        if args.list_runs:
+            print_list_runs(store)
+        return
 
     run_demo(
         target_company=args.target,

@@ -488,6 +488,16 @@ class ADKExecutiveOrchestrator:
                 "final_decision": decision.value,
                 "decision_matches_ground_truth": (decision == gt_info["expected_decision"]),
             }
+
+            try:
+                from acquisense.evaluation_store import EvaluationStore
+                eval_store = EvaluationStore(self.config.sqlite_db_path)
+                recorded_run_id = eval_store.record_run(report, metrics)
+                metrics["evaluation_run_id"] = recorded_run_id
+                metrics["total_runs_in_store"] = eval_store.get_total_runs_count()
+            except Exception as ex:
+                metrics["evaluation_store_error"] = str(ex)
+
             return report, blackboard, metrics
         finally:
             with _WORKFLOW_CTX_LOCK:
@@ -514,6 +524,8 @@ class AcquiSenseRuntimeCluster:
         self.monitor = AgentMonitoringCallbackHandler(self.tracer)
         self.guardrails = SecurityGuardrailEngine()
         self.llm_cache = PersistentLLMCache(self.config.sqlite_db_path)
+        from acquisense.evaluation_store import EvaluationStore
+        self.eval_store = EvaluationStore(self.config.sqlite_db_path)
         self.gateway = AICreditsModelGateway(self.config, self.llm_cache)
 
         self.mcp_tools = build_mcp_tools(self.reg_db_path, self.guardrails)

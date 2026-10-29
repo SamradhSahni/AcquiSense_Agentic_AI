@@ -1,0 +1,43 @@
+result_id,run_id,domain,agent_id,framework,risk_score,severity,quantified_exposure_musd,deterministic_adjustment_musd,contingent_escrow_exposure_musd,heuristic_confidence,actual_mode,findings_count,covenants_count,evidence_refs_count,quarantined_count
+RUN-20261029-164401-28A1BF-CrewAI_Cyber_Agent,RUN-20261029-164401-28A1BF,Cybersecurity & Threat Posture,CrewAI_Cyber_Agent,CrewAI,76.0,CRITICAL,6.4,0.0,6.4,0.89,deterministic,2,1,1,0
+RUN-20261029-164401-28A1BF-CrewAI_ESG_Agent,RUN-20261029-164401-28A1BF,ESG & Sustainability,CrewAI_ESG_Agent,CrewAI,23.89,LOW,1.6,1.6,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164401-28A1BF-ADK_Financial_Agent,RUN-20261029-164401-28A1BF,Financial Performance,ADK_Financial_Agent,Google_ADK,56.0,HIGH,9.65,4.15,5.5,0.92,deterministic,5,2,2,0
+RUN-20261029-164401-28A1BF-CrewAI_HR_Agent,RUN-20261029-164401-28A1BF,Human Resources & Talent,CrewAI_HR_Agent,CrewAI,56.0,HIGH,6.8,6.8,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164401-28A1BF-ADK_Legal_Agent,RUN-20261029-164401-28A1BF,Legal & Regulatory,ADK_Legal_Agent,Google_ADK,76.0,CRITICAL,19.7,0.0,19.7,0.92,deterministic,3,2,2,1
+RUN-20261029-164401-28A1BF-CrewAI_Tech_Agent,RUN-20261029-164401-28A1BF,Technology & Architecture,CrewAI_Tech_Agent,CrewAI,37.01,MEDIUM,4.8,4.8,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164509-A423B3-CrewAI_Cyber_Agent,RUN-20261029-164509-A423B3,Cybersecurity & Threat Posture,CrewAI_Cyber_Agent,CrewAI,76.0,CRITICAL,6.4,0.0,6.4,0.89,deterministic,2,1,1,0
+RUN-20261029-164509-A423B3-CrewAI_ESG_Agent,RUN-20261029-164509-A423B3,ESG & Sustainability,CrewAI_ESG_Agent,CrewAI,23.89,LOW,1.6,1.6,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164509-A423B3-ADK_Financial_Agent,RUN-20261029-164509-A423B3,Financial Performance,ADK_Financial_Agent,Google_ADK,56.0,HIGH,9.65,4.15,5.5,0.92,deterministic,5,2,2,0
+RUN-20261029-164509-A423B3-CrewAI_HR_Agent,RUN-20261029-164509-A423B3,Human Resources & Talent,CrewAI_HR_Agent,CrewAI,56.0,HIGH,6.8,6.8,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164509-A423B3-ADK_Legal_Agent,RUN-20261029-164509-A423B3,Legal & Regulatory,ADK_Legal_Agent,Google_ADK,76.0,CRITICAL,19.7,0.0,19.7,0.92,deterministic,3,2,2,1
+RUN-20261029-164509-A423B3-CrewAI_Tech_Agent,RUN-20261029-164509-A423B3,Technology & Architecture,CrewAI_Tech_Agent,CrewAI,37.01,MEDIUM,4.8,4.8,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164509-B7B72B-CrewAI_Cyber_Agent,RUN-20261029-164509-B7B72B,Cybersecurity & Threat Posture,CrewAI_Cyber_Agent,CrewAI,76.0,CRITICAL,6.4,0.0,6.4,0.89,deterministic,2,1,1,0
+RUN-20261029-164509-B7B72B-CrewAI_ESG_Agent,RUN-20261029-164509-B7B72B,ESG & Sustainability,CrewAI_ESG_Agent,CrewAI,23.89,LOW,1.6,1.6,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164509-B7B72B-ADK_Financial_Agent,RUN-20261029-164509-B7B72B,Financial Performance,ADK_Financial_Agent,Google_ADK,56.0,HIGH,9.65,4.15,5.5,0.92,deterministic,5,2,2,0
+RUN-20261029-164509-B7B72B-CrewAI_HR_Agent,RUN-20261029-164509-B7B72B,Human Resources & Talent,CrewAI_HR_Agent,CrewAI,56.0,HIGH,6.8,6.8,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164509-B7B72B-ADK_Legal_Agent,RUN-20261029-164509-B7B72B,Legal & Regulatory,ADK_Legal_Agent,Google_ADK,76.0,CRITICAL,19.7,0.0,19.7,0.92,deterministic,3,2,2,1
+RUN-20261029-164509-B7B72B-CrewAI_Tech_Agent,RUN-20261029-164509-B7B72B,Technology & Architecture,CrewAI_Tech_Agent,CrewAI,37.01,MEDIUM,4.8,4.8,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-943D0D-CrewAI_Cyber_Agent,RUN-20261029-164510-943D0D,Cybersecurity & Threat Posture,CrewAI_Cyber_Agent,CrewAI,12.47,LOW,0.6,0.0,0.6,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-943D0D-CrewAI_ESG_Agent,RUN-20261029-164510-943D0D,ESG & Sustainability,CrewAI_ESG_Agent,CrewAI,13.68,LOW,0.35,0.35,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-943D0D-ADK_Financial_Agent,RUN-20261029-164510-943D0D,Financial Performance,ADK_Financial_Agent,Google_ADK,15.51,LOW,1.2,1.2,0.0,0.89,deterministic,4,1,1,0
+RUN-20261029-164510-943D0D-CrewAI_HR_Agent,RUN-20261029-164510-943D0D,Human Resources & Talent,CrewAI_HR_Agent,CrewAI,15.51,LOW,2.1,2.1,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-943D0D-ADK_Legal_Agent,RUN-20261029-164510-943D0D,Legal & Regulatory,ADK_Legal_Agent,Google_ADK,13.5,LOW,1.5,0.0,1.5,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-943D0D-CrewAI_Tech_Agent,RUN-20261029-164510-943D0D,Technology & Architecture,CrewAI_Tech_Agent,CrewAI,13.44,LOW,0.9,0.9,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C274CA-CrewAI_Cyber_Agent,RUN-20261029-164510-C274CA,Cybersecurity & Threat Posture,CrewAI_Cyber_Agent,CrewAI,76.0,CRITICAL,6.4,0.0,6.4,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C274CA-CrewAI_ESG_Agent,RUN-20261029-164510-C274CA,ESG & Sustainability,CrewAI_ESG_Agent,CrewAI,23.89,LOW,1.6,1.6,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C274CA-ADK_Financial_Agent,RUN-20261029-164510-C274CA,Financial Performance,ADK_Financial_Agent,Google_ADK,56.0,HIGH,9.65,4.15,5.5,0.92,deterministic,5,2,2,0
+RUN-20261029-164510-C274CA-CrewAI_HR_Agent,RUN-20261029-164510-C274CA,Human Resources & Talent,CrewAI_HR_Agent,CrewAI,56.0,HIGH,6.8,6.8,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C274CA-ADK_Legal_Agent,RUN-20261029-164510-C274CA,Legal & Regulatory,ADK_Legal_Agent,Google_ADK,76.0,CRITICAL,19.7,0.0,19.7,0.92,deterministic,3,2,2,1
+RUN-20261029-164510-C274CA-CrewAI_Tech_Agent,RUN-20261029-164510-C274CA,Technology & Architecture,CrewAI_Tech_Agent,CrewAI,37.01,MEDIUM,4.8,4.8,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C9F4BB-CrewAI_Cyber_Agent,RUN-20261029-164510-C9F4BB,Cybersecurity & Threat Posture,CrewAI_Cyber_Agent,CrewAI,12.47,LOW,0.6,0.0,0.6,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C9F4BB-CrewAI_ESG_Agent,RUN-20261029-164510-C9F4BB,ESG & Sustainability,CrewAI_ESG_Agent,CrewAI,13.68,LOW,0.35,0.35,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C9F4BB-ADK_Financial_Agent,RUN-20261029-164510-C9F4BB,Financial Performance,ADK_Financial_Agent,Google_ADK,15.51,LOW,1.2,1.2,0.0,0.89,deterministic,4,1,1,0
+RUN-20261029-164510-C9F4BB-CrewAI_HR_Agent,RUN-20261029-164510-C9F4BB,Human Resources & Talent,CrewAI_HR_Agent,CrewAI,15.51,LOW,2.1,2.1,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C9F4BB-ADK_Legal_Agent,RUN-20261029-164510-C9F4BB,Legal & Regulatory,ADK_Legal_Agent,Google_ADK,13.5,LOW,1.5,0.0,1.5,0.89,deterministic,2,1,1,0
+RUN-20261029-164510-C9F4BB-CrewAI_Tech_Agent,RUN-20261029-164510-C9F4BB,Technology & Architecture,CrewAI_Tech_Agent,CrewAI,13.44,LOW,0.9,0.9,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164511-2ED218-CrewAI_Cyber_Agent,RUN-20261029-164511-2ED218,Cybersecurity & Threat Posture,CrewAI_Cyber_Agent,CrewAI,12.47,LOW,0.6,0.0,0.6,0.89,deterministic,2,1,1,0
+RUN-20261029-164511-2ED218-CrewAI_ESG_Agent,RUN-20261029-164511-2ED218,ESG & Sustainability,CrewAI_ESG_Agent,CrewAI,13.68,LOW,0.35,0.35,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164511-2ED218-ADK_Financial_Agent,RUN-20261029-164511-2ED218,Financial Performance,ADK_Financial_Agent,Google_ADK,15.51,LOW,1.2,1.2,0.0,0.89,deterministic,4,1,1,0
+RUN-20261029-164511-2ED218-CrewAI_HR_Agent,RUN-20261029-164511-2ED218,Human Resources & Talent,CrewAI_HR_Agent,CrewAI,15.51,LOW,2.1,2.1,0.0,0.89,deterministic,2,1,1,0
+RUN-20261029-164511-2ED218-ADK_Legal_Agent,RUN-20261029-164511-2ED218,Legal & Regulatory,ADK_Legal_Agent,Google_ADK,13.5,LOW,1.5,0.0,1.5,0.89,deterministic,2,1,1,0
+RUN-20261029-164511-2ED218-CrewAI_Tech_Agent,RUN-20261029-164511-2ED218,Technology & Architecture,CrewAI_Tech_Agent,CrewAI,13.44,LOW,0.9,0.9,0.0,0.89,deterministic,2,1,1,0
