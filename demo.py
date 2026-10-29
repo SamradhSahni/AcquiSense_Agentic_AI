@@ -122,12 +122,13 @@ def run_demo(target_company: str, pattern: str = "Hierarchical", mode: str = "de
         print()
 
     # Metrics
+    wall_ms = metrics.get('wall_clock_ms', 0)
     print("[*] Execution & Runtime Metrics:")
     print(f"    • Actual Execution Mode : {report.actual_execution_mode}")
-    print(f"    • Total Wall Clock RTT  : {metrics.get('workflow_wall_time_ms', 0):.2f} ms")
-    print(f"    • A2A HTTP Interactions : {metrics.get('http_a2a_exchanges_count', 0)} calls")
-    print(f"    • LLM Cache Hits/Misses : {metrics.get('llm_cache_hits', 0)} hit(s) / {metrics.get('llm_cache_misses', 0)} miss(es)")
-    print(f"    • Blackboard Commits    : {metrics.get('blackboard_commits_count', 0)} commit(s)")
+    print(f"    • Total Wall Clock Time : {wall_ms:.2f} ms ({wall_ms/1000.0:.2f} seconds)")
+    print(f"    • Messaging Operations  : {metrics.get('message_ops', 0)} blackboard read/writes")
+    print(f"    • Cache Hits in Run     : {metrics.get('cache_hits_in_run', 0)} hit(s)")
+    print(f"    • In-Fold ML F1 Score   : {metrics.get('risk_f1_pct', 0):.1f}%")
 
     # Export report if requested
     if not export_path:
