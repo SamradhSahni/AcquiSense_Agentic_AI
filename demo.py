@@ -14,7 +14,10 @@ Demonstrates:
 import os
 import sys
 import argparse
+import warnings
 from datetime import datetime, timezone
+
+warnings.filterwarnings("ignore", category=Warning)
 
 try:
     from dotenv import load_dotenv

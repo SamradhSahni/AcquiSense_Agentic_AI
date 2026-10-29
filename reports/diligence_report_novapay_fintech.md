@@ -1,6 +1,6 @@
 # AcquiSense M&A Due Diligence Executive Report: NovaPay FinTech Corp
 
-**Date Generated (UTC)**: `2026-10-29T05:13:18.087783+00:00`  
+**Date Generated (UTC)**: `2026-10-29T05:18:15.870650+00:00`  
 **Acquiring Entity**: `Apex Global Bank`  
 **Evaluation Mode**: `live_cache_replay`  
 **Final Committee Decision**: **CONDITIONAL_GO**  
@@ -114,7 +114,7 @@
   - [VDR-NP-FIN-101] Indemnity escrow holdback of $5 million is agreed upon as part of the purchase agreement to mitigate potential risks identified during due diligence.
   - [VDR-NP-FIN-102] The less total debt is reported as $100 million, impacting the net cash to be delivered to the seller at closing.
   - [VDR-NP-FIN-102] Purchase price adjustments are based on working capital adjustments calculated from closing date financials.
-  - [A2A_CrossCheck] Verified with CrewAI_Cyber_Agent: SBOM critical CVEs=2 (deal_id=deal-c1b5e07d).
+  - [A2A_CrossCheck] Verified with CrewAI_Cyber_Agent: SBOM critical CVEs=2 (deal_id=deal-77adb7eb).
   - [DCF_ML_Engine] NovaPay FinTech Corp: Base EV=$222.38M, Implied Equity=$214.88M, Offer=$197.53M, Escrow=$31.60M; PMI Failure Prob=68.06%.
 - **Recommended Mitigation Covenants**:
   - Include a financial covenants clause to monitor ongoing debt levels and ensure debt does not exceed calculated thresholds affecting the purchase price.
