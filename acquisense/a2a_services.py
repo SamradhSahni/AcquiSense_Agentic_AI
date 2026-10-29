@@ -453,7 +453,7 @@ class StandardA2AFederatedClient:
         random_seed: int = 2026,
         requested_execution_mode: str = "deterministic",
         blackboard_id: Optional[str] = None,
-        deadline_ms_from_now: float = 30000.0,
+        deadline_ms_from_now: float = 90000.0,
     ) -> Tuple[Dict[str, Any], DomainRiskAssessment]:
         if skill_id not in self.skill_to_endpoint:
             raise KeyError(f"Skill '{skill_id}' not discovered in federated A2A directory.")
@@ -502,7 +502,7 @@ class StandardA2AFederatedClient:
         )
         t0 = time.perf_counter()
         try:
-            with urllib.request.urlopen(req, timeout=25.0) as resp:
+            with urllib.request.urlopen(req, timeout=90.0) as resp:
                 rpc_resp = json.loads(resp.read().decode("utf-8"))
                 task_obj = rpc_resp["result"]
                 artifact_data = task_obj["artifacts"][0]["parts"][0]["data"]

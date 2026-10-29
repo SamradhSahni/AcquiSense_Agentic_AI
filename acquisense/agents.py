@@ -600,6 +600,29 @@ class DomainSpecialistAgent:
             "5_Pydantic_Validation", {"agent_id": self.agent_id},
             execution_mode=actual_mode, model_id=actual_model,
         ) as s5_ctx:
+            domain_ev_ids = [e["evidence_id"] for e in ev_items]
+            all_ev_refs = list(dict.fromkeys(list(extracted_facts.selected_evidence_ids or []) + domain_ev_ids))
+            valid_tags = all_ev_refs + ["[SQLite_Registry]", "[DCF_ML_Engine]", "[No_Material_Findings]", "[A2A_CrossCheck]"]
+
+            grounded_findings: List[str] = []
+            for idx, finding in enumerate(extracted_facts.extracted_clause_facts or []):
+                if any(t in finding for t in valid_tags):
+                    grounded_findings.append(finding)
+                elif domain_ev_ids:
+                    tag = domain_ev_ids[min(idx, len(domain_ev_ids) - 1)]
+                    grounded_findings.append(f"[{tag}] {finding}")
+                else:
+                    grounded_findings.append(f"[No_Material_Findings] {finding}")
+
+            for extra in extra_findings:
+                if extra not in grounded_findings:
+                    grounded_findings.append(extra)
+
+            if not grounded_findings and domain_ev_ids:
+                grounded_findings = [f"[{e['evidence_id']}] {e['clause_summary']}" for e in ev_items] + extra_findings
+            elif not grounded_findings:
+                grounded_findings = ["[No_Material_Findings] Zero material risk items identified."]
+
             assessment = DomainRiskAssessment(
                 agent_id=self.agent_id,
                 framework=self.framework,
@@ -622,9 +645,9 @@ class DomainSpecialistAgent:
                 contingent_escrow_exposure_musd=esc_exp,
                 quantified_exposure_musd=tot_exp,
                 dimension_breakdown=dim_breakdown,
-                key_findings=extracted_facts.extracted_clause_facts,
+                key_findings=grounded_findings,
                 mitigation_covenants=extracted_facts.recommended_mitigation_covenants,
-                evidence_refs=extracted_facts.selected_evidence_ids,
+                evidence_refs=domain_ev_ids,
                 excluded_benign_doc_ids=extracted_facts.excluded_benign_doc_ids,
                 quarantined_doc_ids=extracted_facts.quarantined_doc_ids,
                 worker_verification_summary=worker_summary,

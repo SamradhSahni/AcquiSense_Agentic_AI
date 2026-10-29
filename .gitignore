@@ -29,11 +29,13 @@ venv/
 .venv/
 env/
 
-# IDE
+# IDE & Tools
 .vscode/
 .idea/
 *.swp
 *.swo
+.crewai/
+
 
 # OS files
 Thumbs.db

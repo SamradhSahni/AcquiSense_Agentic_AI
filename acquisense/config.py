@@ -37,6 +37,10 @@ except ImportError:
     ADKLiteLlm = None
     ADK_SDK_AVAILABLE = False
 
+os.environ.setdefault("CREWAI_TRACING_ENABLED", "false")
+os.environ.setdefault("CREWAI_TELEMETRY_OPT_OUT", "true")
+os.environ.setdefault("OTEL_SDK_DISABLED", "true")
+
 try:
     import crewai
     from crewai import Agent as CrewAIAgent, Task as CrewAITask, Crew as CrewAICrew, Process as CrewAIProcess
